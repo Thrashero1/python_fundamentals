@@ -1,14 +1,14 @@
 import simplejson as json
 import os
 
-"""
+
 # creates a files we can write to (w+) or read from (r+)
 new_file = open("new_file.txt", "w+")
 
 string = "This is what will be written to the file"
 
 new_file.write(string)
-"""
+
 
 # Here we write and read from a json file
 # we check if the files exists and is not empty

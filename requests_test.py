@@ -1,6 +1,6 @@
 import requests
+import simplejson as json
 from io import BytesIO
-from PIL import Image
 
 # getting data through html get requests
 '''params = {"q": "samsung"}
@@ -43,8 +43,23 @@ except IOError:
 
 # using POST requests to post directly to the server (serverside)
 
-my_data = {"name": "David Borg", "email": "test@test.om"}
+'''my_data = {"name": "David Borg", "email": "test@test.om"}
 r = requests.post("https://tryphp.w3schools.com/demo/welcome.php", data= my_data)
 
 f = open("myFile.html", "w+")
-f.write(r.text)
+f.write(r.text)'''
+
+# Posting Json
+
+url = "https://api.rebrandly.com/v1/links"
+data = {"destination": "https://www.youtube.com/channel/UCHK4HD0ltu1-I212icLPt3g",
+        "domain": {"fullName": "rebrand.ly"}}
+# need to get api key
+headers = {
+  "Content-type": "application/json",
+  "apikey": "YOUR_API_KEY",
+  "workspace": "YOUR_WORKSPACE_ID"
+}
+r = requests.post(url, data=json.dumps(data), headers=headers)
+
+print(r.status_code)
